@@ -4,10 +4,7 @@ import bg.softuni.booksrestserver.model.dto.BookDto;
 import bg.softuni.booksrestserver.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +32,13 @@ public class BooksController {
                 .orElseGet(() -> ResponseEntity.notFound().build()); // Status Code: 404 object not found
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<BookDto> deleteBookById(@PathVariable("id") Long bookId) {
+        this.bookService.deleteById(bookId);
+        return ResponseEntity.noContent().build(); // Status Code: 204 no content
+    }
 
+    
 
 }
 

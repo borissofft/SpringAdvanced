@@ -19,6 +19,9 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
+    public void deleteById(Long bookId) {
+        this.bookRepository.deleteById(bookId);
+    }
     public Optional<BookDto> findBookById(Long bookId) {
         return this.bookRepository
                 .findById(bookId)
