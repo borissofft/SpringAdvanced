@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -16,6 +17,12 @@ public class BookService {
     @Autowired
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
+    }
+
+    public Optional<BookDto> findBookById(Long bookId) {
+        return this.bookRepository
+                .findById(bookId)
+                .map(this::map);
     }
 
     public List<BookDto> getAllBooks() {
@@ -28,7 +35,8 @@ public class BookService {
     private BookDto map(Book book) {
         AuthorDto authorDto = new AuthorDto()
                 .setName(book.getAuthor().getName());
-        return new BookDto().setId(book.getId())
+        return new BookDto()
+                .setId(book.getId())
                 .setAuthor(authorDto)
                 .setIsbn(book.getIsbn())
                 .setTitle(book.getTitle());

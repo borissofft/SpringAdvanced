@@ -1,7 +1,6 @@
 package bg.softuni.booksrestserver.model.dto;
 
 public class BookDto {
-
     private Long id;
     private String title;
     private String isbn;

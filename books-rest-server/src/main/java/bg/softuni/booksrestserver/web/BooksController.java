@@ -5,10 +5,12 @@ import bg.softuni.booksrestserver.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
@@ -26,13 +28,15 @@ public class BooksController {
         return ResponseEntity.ok(this.bookService.getAllBooks()); // This return status code 200 OK and Json array with DTOs
     }
 
-//    @GetMapping()
-//    public ResponseEntity<BookDto> getBookById(@PathVariable("id") Long bookId) {
-//
-//
-//        return null;
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<BookDto> getBookById(@PathVariable("id") Long bookId) {
+        Optional<BookDto> theBook = this.bookService.findBookById(bookId);
+        return theBook.map(ResponseEntity::ok) // Status Code: 200 OK
+                .orElseGet(() -> ResponseEntity.notFound().build()); // Status Code: 404 object not found
+    }
+
+
 
 }
 
-// 1:53:25
+// 1:31:25
