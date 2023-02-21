@@ -5,6 +5,7 @@ import bg.softuni.booksrestserver.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,8 +39,17 @@ public class BooksController {
         return ResponseEntity.noContent().build(); // Status Code: 204 no content
     }
 
-    
+    @PostMapping()
+    public ResponseEntity<BookDto> createBook(@RequestBody BookDto newBook, // In postman we have to say that the request is in JSON format
+                                              UriComponentsBuilder uriComponentsBuilder) { // Get body with Json format and try to map it to BookDto.class automatically
+
+        long newBookId = bookService.createBook(newBook);
+
+        return ResponseEntity.created(uriComponentsBuilder.
+                        path("/api/books/{id}").build(newBookId))
+                        .build();
+    }
 
 }
 
-// 1:31:25
+// 1:06:25

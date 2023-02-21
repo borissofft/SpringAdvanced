@@ -20,24 +20,27 @@ public class Book {
         return id;
     }
 
-    public void setId(Long id) {
+    public Book setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Book setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public Book setIsbn(String isbn) {
         this.isbn = isbn;
+        return this;
     }
 
     @ManyToOne
@@ -45,9 +48,11 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public Book setAuthor(Author author) {
         this.author = author;
+        return this;
     }
+
 
     @Override
     public String toString() {

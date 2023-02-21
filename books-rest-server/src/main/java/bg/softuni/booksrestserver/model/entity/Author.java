@@ -16,22 +16,25 @@ public class Author {
 
     }
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public Author setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Author setName(String name) {
         this.name = name;
+        return this;
     }
 
     @OneToMany(mappedBy = "author")
@@ -39,8 +42,9 @@ public class Author {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public Author setBooks(List<Book> books) {
         this.books = books;
+        return this;
     }
 
     @Override
