@@ -7,7 +7,6 @@ import bg.softuni.hateoas.model.entity.StudentEntity;
 import bg.softuni.hateoas.repository.StudentRepository;
 import java.util.List;
 import java.util.Optional;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 
 @Service

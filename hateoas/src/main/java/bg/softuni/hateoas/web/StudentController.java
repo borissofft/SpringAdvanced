@@ -7,7 +7,6 @@ import bg.softuni.hateoas.model.dto.StudentDTO;
 import bg.softuni.hateoas.service.StudentService;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.coyote.Response;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -29,7 +28,7 @@ public class StudentController {
   }
 
   @GetMapping
-  public ResponseEntity<CollectionModel<EntityModel<StudentDTO>>> all() {
+  public ResponseEntity<CollectionModel<EntityModel<StudentDTO>>> all() { // Collection of EntityModel which consists of StudentDTO with Links for it
 
     List<EntityModel<StudentDTO>> entityModels = studentService.getAllStudents().
         stream().map(
