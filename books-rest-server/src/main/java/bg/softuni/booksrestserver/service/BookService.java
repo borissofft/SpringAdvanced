@@ -40,7 +40,8 @@ public class BookService {
     }
 
     public void deleteById(Long bookId) {
-        this.bookRepository.deleteById(bookId);
+        var bookOpt = this.bookRepository.findById(bookId);
+        bookOpt.ifPresent(this.bookRepository::delete);
     }
 
     public Optional<BookDto> findBookById(Long bookId) {
