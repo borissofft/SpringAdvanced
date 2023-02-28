@@ -10,7 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:63342")
 @RestController
 @RequestMapping("/api/books")
 public class BooksController {
