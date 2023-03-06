@@ -26,3 +26,6 @@ cloudinary:
   api-key: 679249556851288
   api-secret: "${CLOUDINARY_API_SECRET}"
   cloud-name: luchob
+
+
+# Use Environment variable from Edit configuration menu to set CLOUDINARY_API_SECRET because is sensitive information
