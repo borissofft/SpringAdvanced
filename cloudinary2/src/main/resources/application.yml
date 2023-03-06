@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: password
+    url: jdbc:h2:mem:testdb
+    username: sa
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+  h2:
+    console:
+      enabled: true
+  jpa:
+    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+
+# Cloudinary properties
+cloudinary:
+  api-key: 679249556851288
+  api-secret: "${CLOUDINARY_API_SECRET}"
+  cloud-name: luchob
