@@ -42,7 +42,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
                     .setUrl(url)
                     .setPublicId(publicId);
         } finally {
-            tempFile.delete();
+            tempFile.delete(); // delete tempFile after every upload
         }
 
     }
