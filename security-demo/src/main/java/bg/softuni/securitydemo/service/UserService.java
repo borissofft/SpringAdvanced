@@ -6,6 +6,7 @@ import bg.softuni.securitydemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.SecurityContextRepository;
@@ -39,12 +40,13 @@ public class UserService {
         // TODO here we have to add Role to the userEntity if we want to have... Implement it in the project!
         this.userRepository.save(userEntity);
 
-        var userDetails = this.userDetailsService.loadUserByUsername(userRegistrationDto.getEmail());
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(userRegistrationDto.getEmail());
 
+        // See SpringSecurityDiagram.jpg
         Authentication authentication = new UsernamePasswordAuthenticationToken(
-                userDetails,
-                userDetails.getPassword(),
-                userDetails.getAuthorities()
+                userDetails, // Principal
+                userDetails.getPassword(), // Credentials
+                userDetails.getAuthorities() // Authorities (List<GrantedAuthorities>)
         );
 
         successfulLoginProcessor.accept(authentication);

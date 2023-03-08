@@ -39,10 +39,12 @@ public class UserRegistrationController {
         SecurityContextHolderStrategy strategy = SecurityContextHolder.getContextHolderStrategy(); // allows us to create empty SecurityContext
 
         SecurityContext context = strategy.createEmptyContext();
-        context.setAuthentication(successfulAuth);
+        context.setAuthentication(successfulAuth); // Set the userDetails successful authentication
 
         strategy.setContext(context);
-        this.securityContextRepository.saveContext(context, request, response);
+        this.securityContextRepository.saveContext(context, request, response); // Here we save authentication of the registered User
+            // and can get it in other session automatically from the repository (Login)
+            // Make "auto" Login!!! No need to set all authentication details Principal, Credentials, Authorities for current User.
         });
 
         return "redirect:/";
