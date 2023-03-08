@@ -30,7 +30,7 @@ public class UserRegistrationController {
     }
 
     @PostMapping("/users/register")
-    public String registerNewUser(UserRegistrationDto registrationDto,
+    public String registerNewUser(UserRegistrationDto registrationDto, // Don't forget to use @Valid for DTO, BindingResult and RedirectAttributes in the project
                                   HttpServletRequest request,
                                   HttpServletResponse response) {
 
