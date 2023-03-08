@@ -36,6 +36,7 @@ public class UserService {
                 .setEmail(userRegistrationDto.getEmail())
                 .setPassword(passwordEncoder.encode(userRegistrationDto.getPassword()));
 
+        // TODO here we have to add Role to the userEntity if we want to have... Implement it in the project!
         this.userRepository.save(userEntity);
 
         var userDetails = this.userDetailsService.loadUserByUsername(userRegistrationDto.getEmail());
