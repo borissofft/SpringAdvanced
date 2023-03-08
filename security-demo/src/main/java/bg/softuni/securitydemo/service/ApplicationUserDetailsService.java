@@ -3,6 +3,7 @@ package bg.softuni.securitydemo.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import bg.softuni.securitydemo.model.AppUserDetails;
 import bg.softuni.securitydemo.model.entity.UserEntity;
 import bg.softuni.securitydemo.model.entity.UserRoleEntity;
 import bg.softuni.securitydemo.repository.UserRepository;
@@ -33,10 +34,13 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails map(UserEntity userEntity) {
-        return new User(
+        return new AppUserDetails(
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-        extractAuthorities(userEntity)
+        extractAuthorities(userEntity))
+                .setCountry(userEntity.getCountry())
+                .setFullName(userEntity.getFirstName() + " " + userEntity.getLastName()
+
 //                userEntity.getRoles()
 //                        .stream()
 //                        .map(userRoleEntity -> new SimpleGrantedAuthority("ROLE_" + userRoleEntity.getRole().name())).toList()
