@@ -3,9 +3,8 @@ package bg.softuni.errors.model;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Product was not found.")
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Product was not found.") // Status code 404
 public class ProductNotFoundException extends RuntimeException {
-
     private long productId;
 
     public ProductNotFoundException(long productId) {
