@@ -15,5 +15,3 @@ public class UserManualController {
 
 
 }
-
-// 51:44
