@@ -7,6 +7,7 @@ import com.softuni.mobilele.domain.enums.UserRoleEnum;
 import com.softuni.mobilele.repositories.RoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
+@Order(0)
 public class UserRoleService implements DataBaseInitService {
     private final RoleRepository roleRepository;
     private final ModelMapper modelMapper;
@@ -29,19 +31,19 @@ public class UserRoleService implements DataBaseInitService {
 
     @Override
     public void dbInit() {
-        if (!isDbInit()) {
+
             List<UserRoleEntity> roles = new ArrayList<>();
 
             roles.add(new UserRoleEntity().setRole(UserRoleEnum.USER));
             roles.add(new UserRoleEntity().setRole(UserRoleEnum.ADMIN));
 
             this.roleRepository.saveAllAndFlush(roles);
-        }
+
     }
 
     @Override
     public boolean isDbInit() {
-        return this.roleRepository.count() > 0;
+        return this.roleRepository.count() == 0;
     }
 
     public List<UserRoleViewDto> getAll() {

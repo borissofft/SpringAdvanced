@@ -2,7 +2,6 @@ package com.softuni.mobilele.domain.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,7 +9,7 @@ import java.util.List;
 public class UserEntity extends BaseEntity {
 
     @Column
-    private String username; // –  username of the user.
+    private String email; // –  username of the user.
 
     @Column
     private String password; //– password of the user.
@@ -27,21 +26,12 @@ public class UserEntity extends BaseEntity {
     @ManyToMany(cascade = CascadeType.MERGE)
     private List<UserRoleEntity> roles; //–  user's role (UserEntity or Admin).
 
-    @Column
-    private String imageUrl;//– a url of user's picture.
-
-    @Column
-    private Date created; // a date and time.
-
-    @Column
-    private Date modified;//– a date and time.
-
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public UserEntity setUsername(String username) {
-        this.username = username;
+    public UserEntity setEmail(String email) {
+        this.email = email;
         return this;
     }
 
@@ -90,30 +80,4 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public UserEntity setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public UserEntity setCreated(Date created) {
-        this.created = created;
-        return this;
-    }
-
-    public Date getModified() {
-        return modified;
-    }
-
-    public UserEntity setModified(Date modified) {
-        this.modified = modified;
-        return this;
-    }
 }
