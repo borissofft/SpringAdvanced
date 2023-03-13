@@ -8,3 +8,8 @@ spring:
         database-platform: org.hibernate.dialect.MySQLDialect
         hibernate:
             ddl-auto: update
+mail:
+    host: localhost
+    port: 1025
+    username: "admin@example.com"
+    password: ""
