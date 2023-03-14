@@ -1,5 +1,6 @@
 package com.softuni.mobilele.services;
 
+import com.softuni.mobilele.domain.dtoS.banding.UserRegisterFormDto;
 import com.softuni.mobilele.domain.entities.UserEntity;
 import com.softuni.mobilele.repositories.RoleRepository;
 import com.softuni.mobilele.repositories.UserRepository;
@@ -40,6 +41,18 @@ public class UserService implements DataBaseInitService {
     @Override
     public boolean isDbInit() {
         return this.userRepository.count()== 0;
+    }
+
+    public void registerUser(UserRegisterFormDto registrationDTO) {
+        UserEntity userEntity = new UserEntity().
+                setFirstName(registrationDTO.getFirstName()).
+                setLastName(registrationDTO.getLastName()).
+                setEmail(registrationDTO.getEmail()).
+                setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+
+        userRepository.save(userEntity);
+
+        //
     }
 
 }
