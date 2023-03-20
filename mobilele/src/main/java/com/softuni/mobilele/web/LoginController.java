@@ -12,22 +12,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/users")
 public class LoginController {
 
-  @GetMapping("/login")
-  public String getLogin() {
-    return "auth-login";
-  }
+    @GetMapping("/login")
+    public String getLogin() {
+        return "auth-login";
+    }
 
 
-  @PostMapping("/login-error")
-  public String onFailedLogin(
-      @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
-      RedirectAttributes redirectAttributes) {
+    @PostMapping("/login-error")
+    public String onFailedLogin(
+            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
+            RedirectAttributes redirectAttributes) {
 
-    redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
-    redirectAttributes.addFlashAttribute("bad_credentials", true);
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
 
-    return "redirect:/users/login";
-  }
+        return "redirect:/users/login";
+    }
 
 
 }

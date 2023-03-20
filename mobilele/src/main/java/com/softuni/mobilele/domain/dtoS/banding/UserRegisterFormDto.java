@@ -29,15 +29,15 @@ public class UserRegisterFormDto {
     @Size(min = 5, max = 20)
     private String lastName;
 
-    @NotNull
-    private UserRoleEnum role;
-
-    public String getEmail() {
-        return email;
-    }
+//    @NotNull
+//    private UserRoleEnum role;
 
     public UserRegisterFormDto() {
 
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public UserRegisterFormDto setEmail(String email) {
@@ -81,12 +81,12 @@ public class UserRegisterFormDto {
         return this;
     }
 
-    public UserRoleEnum getRole() {
-        return role;
-    }
-
-    public UserRegisterFormDto setRole(UserRoleEnum role) {
-        this.role = role;
-        return this;
-    }
+//    public UserRoleEnum getRole() {
+//        return role;
+//    }
+//
+//    public UserRegisterFormDto setRole(UserRoleEnum role) {
+//        this.role = role;
+//        return this;
+//    }
 }
