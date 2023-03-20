@@ -36,47 +36,57 @@ public class UserRegisterFormDto {
         return email;
     }
 
-    public void setEmail(String email) {
+    public UserRegisterFormDto() {
+
+    }
+
+    public UserRegisterFormDto setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public UserRegisterFormDto setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public String getConfirmPassword() {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
+    public UserRegisterFormDto setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public UserRegisterFormDto setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public UserRegisterFormDto setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public UserRoleEnum getRole() {
         return role;
     }
 
-    public void setRole(UserRoleEnum role) {
+    public UserRegisterFormDto setRole(UserRoleEnum role) {
         this.role = role;
+        return this;
     }
 }

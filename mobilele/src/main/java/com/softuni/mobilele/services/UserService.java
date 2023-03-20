@@ -10,40 +10,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements DataBaseInitService {
+public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final RoleRepository roleRepository;
-    private final String defaultAdminPass;
+
 
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository,
-                       @Value("${mobilele.admin.defaultpass}") String defaultAdminPass) {
+    public UserService(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.roleRepository = roleRepository;
-        this.defaultAdminPass = defaultAdminPass;
-    }
-
-    @Override
-    public void dbInit() {
-        UserEntity admin = new UserEntity()
-                .setFirstName("Admin")
-                .setLastName("Adminov")
-                .setEmail("admin@examle.com")
-                .setPassword(passwordEncoder.encode(defaultAdminPass))
-                .setRoles(roleRepository.findAll());
-
-        userRepository.save(admin);
-    }
-
-    @Override
-    public boolean isDbInit() {
-        return this.userRepository.count()== 0;
     }
 
     public void registerUser(UserRegisterFormDto registrationDTO) {
+
         UserEntity userEntity = new UserEntity().
                 setFirstName(registrationDTO.getFirstName()).
                 setLastName(registrationDTO.getLastName()).
