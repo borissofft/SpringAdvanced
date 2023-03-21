@@ -1,41 +1,41 @@
 package com.softuni.mobilele.config;
 
+import java.util.Properties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import java.util.Properties;
-
 @Configuration
 public class MailConfig {
 
-    @Bean
-    public JavaMailSender javaMailSender(
-            @Value("${mail.host}") String mailHost,
-            @Value("${mail.port}") Integer mailPort,
-            @Value("${mail.username}") String mailUsername,
-            @Value("${mail.password}") String mailPassword
-    ) {
-        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setHost(mailHost);
-        javaMailSender.setPort(mailPort);
-        javaMailSender.setUsername(mailUsername);
-        javaMailSender.setPassword(mailPassword);
-        javaMailSender.setJavaMailProperties(mailProperties());
-        javaMailSender.setDefaultEncoding("UTF-8");
+  @Bean
+  public JavaMailSender javaMailSender(
+      @Value("${mail.host}") String mailHost,
+      @Value("${mail.port}") Integer mailPort,
+      @Value("${mail.username}") String mailUsername,
+      @Value("${mail.password}") String mailPassword
 
-        return javaMailSender;
-    }
+  ) {
+    JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 
-    private Properties mailProperties() {
-        Properties properties = new Properties();
+    javaMailSender.setHost(mailHost);
+    javaMailSender.setPort(mailPort);
+    javaMailSender.setUsername(mailUsername);
+    javaMailSender.setPassword(mailPassword);
+    javaMailSender.setJavaMailProperties(mailProperties());
+    javaMailSender.setDefaultEncoding("UTF-8");
 
-        properties.setProperty("mail.smtp.auth", "true");
-        properties.setProperty("mail.transport.protocol", "smtp");
+    return javaMailSender;
+  }
 
-        return properties;
-    }
+  private Properties mailProperties() {
+    Properties properties = new Properties();
 
+    properties.setProperty("mail.smtp.auth", "true");
+    properties.setProperty("mail.transport.protocol", "smtp");
+
+    return properties;
+  }
 }

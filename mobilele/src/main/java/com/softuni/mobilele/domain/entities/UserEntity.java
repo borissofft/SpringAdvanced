@@ -2,6 +2,7 @@ package com.softuni.mobilele.domain.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,16 +25,13 @@ public class UserEntity extends BaseEntity {
     private Boolean isActive; //– true OR false.
 
     @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+        name = "users_roles",
+        joinColumns = { @JoinColumn(name = "user_id") },
+        inverseJoinColumns = { @JoinColumn(name = "role_id") }
+    )
     private List<UserRoleEntity> roles; //–  user's role (UserEntity or Admin).
 
-    public String getEmail() {
-        return email;
-    }
-
-    public UserEntity setEmail(String email) {
-        this.email = email;
-        return this;
-    }
 
     public String getPassword() {
         return password;
@@ -80,4 +78,12 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public UserEntity setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 }
