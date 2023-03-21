@@ -56,7 +56,7 @@ public class RegistrationControllerIT {
         param("lastName", "Petrov").
         param("password", "topsecret").
         param("confirmPassword", "topsecret").
-        with(csrf())
+        with(csrf())  // the request will come with this CSRF token
     ).
         andExpect(status().is3xxRedirection()).
         andExpect(redirectedUrl("/users/login"));
