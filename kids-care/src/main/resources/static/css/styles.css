@@ -63,6 +63,11 @@
     background: #464646;
 }
 
+/*User Approve page background*/
+.user-approve {
+    background: #5a7c8a;
+}
+
 /*Contacts page background*/
 .psychologists-all {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/psychologists.jpg");
@@ -104,6 +109,15 @@
     background-color: #464646;
 }
 
+/*Profiles page background*/
+.profiles-all {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/profiles.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
 
 /* Navigation */
 .navbar .logo {
@@ -200,22 +214,26 @@ h2 {
     padding: 180px 0 47px 0;
 }
 
-/* Profile All */
-
-
-
-
-
+/* Profiles All */
+.profiles-all main {
+    padding: 80px 0 0 0;
+}
 
 /* Register */
 .register main {
     margin: 0 auto;
     padding: 120px 0 274px 0;
 }
+
 /* Login */
 .login main {
     margin: 0 auto;
     padding: 120px 0 393px 0;
+
+}/* User approve */
+.user-approve main {
+    margin: 0 auto;
+    padding: 300px 0 405px 0;
 }
 
 /* Psychologist Add */

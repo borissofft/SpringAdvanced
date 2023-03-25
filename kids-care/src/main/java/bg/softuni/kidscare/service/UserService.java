@@ -81,7 +81,11 @@ public class UserService {
         }
         Optional<UserEntity> optionalUser = this.userRepository.findByUsername(username);
 
-        System.out.println();
         return optionalUser.orElse(null);
     }
+
+    public UserEntity findUserById(Long id) {
+        return this.userRepository.findById(id).orElse(null);
+    }
+
 }

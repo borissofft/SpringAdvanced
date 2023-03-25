@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto col-12 justify-content-between">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}" sec:authorize="isAuthenticated()">Профили</a>
+                    <a class="nav-link" th:href="@{/profiles/all}" sec:authorize="isAuthenticated()">Профили</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/profiles/add}" sec:authorize="hasRole('TEACHER')">Добави профил</a>
@@ -48,8 +48,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" th:href="@{/partners/add}">Добави партньор</a>
                         <a class="dropdown-item" th:href="@{/psychologists/add}">Добави психолог</a>
-                        <!--<div class="dropdown-divider"></div>-->
                         <a class="dropdown-item" th:href="@{/articles/add}">Добави статия</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" th:href="@{/users/approve}">Одобри юзър</a>
                     </div>
                 </li>
@@ -76,11 +76,11 @@
 
 <footer class="footer" th:fragment="footer">
     <p> &copy; Kids Care 2023. All Rights Reserved.</p>
-    <a class="btn btn-outline-light" href="/about" role="button">За нас</a>
-    <a class="btn btn-outline-light" href="/contacts" role="button">Контакти</a>
-    <a class="btn btn-outline-light" href="/partners/all" role="button">Партньори</a>
-    <a class="btn btn-outline-light" href="/" role="button">Начало</a>
-    <a class="button-flash" href="/in-progress">Очаквайте скоро</a>
+    <a class="btn btn-outline-light" th:href="@{/about}" role="button">За нас</a>
+    <a class="btn btn-outline-light" th:href="@{/contacts}" role="button">Контакти</a>
+    <a class="btn btn-outline-light" th:href="@{/partners/all}" role="button">Партньори</a>
+    <a class="btn btn-outline-light" th:href="@{/}" role="button">Начало</a>
+    <a class="button-flash" th:href="@{/in-progress}">Очаквайте скоро</a>
 </footer>
 
 </body>
