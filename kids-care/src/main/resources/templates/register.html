@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="register">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Регистрационна форма</span></h1>
+    <hr class="hr-3 w-25 bg-white"/>
+
+    <form class="mx-auto w-25 bg-blur rounded"
+
+          th:object="${userRegisterBindingModel}"
+          th:action="@{/users/register}"
+          th:method="post">
+
+        <div class="form-group">
+            <div class="label-holder textCol d-flex">
+                <label for="username" class="h4 mb-2 text-white">Твоето име</label>
+            </div>
+            <input
+                    th:field="*{username}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="username" name="username"
+                    required minlength="3" maxlength="30"/>
+            <small class="invalid-feedback text-danger">Твоето име трябва да бъде с дължина от 3 до 30 символа!</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex">
+                <label for="exampleFormControlTextarea1" class="h4 mb-2">Твоят имейл</label>
+            </div>
+            <input
+                    th:field="*{email}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="exampleFormControlTextarea1" name="email"
+                    required minlength="8" maxlength="30"/>
+            <small class="invalid-feedback text-danger">Имейлът трябва да бъде с дължина от 8 до 30 символа!</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex">
+                <label for="password" class="h4 mb-2">Парола</label>
+            </div>
+            <input
+                    th:field="*{password}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="password" name="password"
+                    required minlength="5" maxlength="40"/>
+            <small class="invalid-feedback text-danger">Паролата трябва да бъде с дължина от 5 до 40 символа!</small>
+        </div>
+
+        <select
+                th:field="*{requestedType}"
+                th:errorclass="'is-invalid bg-danger'"
+                class="browser-default custom-select" id="requestedType" name="requestedType">
+            <option value="">Изберете педагог или клиент</option>
+            <option
+                    th:each="r : ${T(bg.softuni.kidscare.model.enums.UserRequestTypeEnum).values()}"
+                    th:value="${r}"
+                    th:text="${r}">
+            </option>
+        </select>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Upload">Регистрация</button>
+        </div>
+
+    </form>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>
