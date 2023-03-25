@@ -1,6 +1,6 @@
 package com.softuni.mobilele.demo;
 
-import com.softuni.mobilele.domain.dtoS.banding.UserRegisterFormDto;
+import com.softuni.mobilele.domain.dtos.binding.UserRegisterFormDto;
 import com.softuni.mobilele.web.BaseController;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
