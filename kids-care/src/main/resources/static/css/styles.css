@@ -66,6 +66,10 @@
 /*User Approve page background*/
 .user-approve {
     background: #5a7c8a;
+
+}/*Details profile page background*/
+.profile-details {
+    background: #5a7c8a;
 }
 
 /*Contacts page background*/
@@ -217,6 +221,18 @@ h2 {
 /* Profiles All */
 .profiles-all main {
     padding: 80px 0 0 0;
+}
+
+/* Profile Details */
+.profile-details main {
+    padding: 120px 0 0 200px;
+}
+
+.profile-details footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Register */

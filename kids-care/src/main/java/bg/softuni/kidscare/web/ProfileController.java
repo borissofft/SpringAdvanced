@@ -41,8 +41,10 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public String getProfileById(@PathVariable Long id) {
-        // TODO ...
+    public String getProfileById(@PathVariable Long id, Model model) {
+
+        model.addAttribute("profile", this.profileService.findProfileById(id));
+        model.addAttribute("imgUtil", new ImageUtil());
 
         return "details";
     }

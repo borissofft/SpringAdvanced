@@ -68,4 +68,9 @@ public class ProfileService {
                 .setUser(this.userService.findUserById(profileEntity.getUser().getId()));
     }
 
+    public ProfileViewModel findProfileById(Long id) {
+        return this.profileRepository.findById(id)
+                .map(profileEntity -> this.modelMapper.map(profileEntity, ProfileViewModel.class))
+                .orElse(null);
+    }
 }
