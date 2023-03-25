@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="register">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <form class="mx-auto w-25 bg-blur rounded"
+
+          th:object="${userApproveBindingModel}"
+          th:action="@{/users/approve}"
+          th:method="post">
+
+        <div class="form-group">
+            <div class="label-holder textCol d-flex">
+                <label for="username" class="h4 mb-2 text-white">Име на юзър</label>
+            </div>
+            <input
+                    th:field="*{username}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="username" name="username"
+                    required minlength="3" maxlength="30"/>
+            <small class="invalid-feedback text-danger">Въведеното(търсеното) име трябва да бъде с дължина от 3 до 30
+                символа!</small>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Upload">Одобри</button>
+        </div>
+
+    </form>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>

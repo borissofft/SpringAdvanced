@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="articles-all">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <ul class="every-article">
+        <li
+                th:each="a : ${articles}"
+                th:object="${a}">
+
+            <img th:src="*{imageUrl}" alt="pic">
+            <h3 th:text="*{title}">Title 1</h3>
+            <p th:text="*{content}"></p>
+        </li>
+    </ul>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>

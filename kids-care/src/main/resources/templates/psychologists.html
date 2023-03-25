@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="psychologists-all">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+
+    <div class="col-4 bg-blur rounded m-2 pb-3">
+        <h3 class="text-light rounded">Нашите психолози:</h3>
+        <div
+                class="mt-3 rounded text-light p-3"
+                th:each="p : ${psychologists}"
+                th:object="${p}">
+            <img class='img-thumbnail'
+                 th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(p.picture.getContent())}"/>
+            <!--            <span class="p-3" th:text="*{firstName}"></span>-->
+            <!--            <span class="p-3" th:text="*{lastName}"></span>           -->
+            <span class="info-name" th:text="|*{firstName} *{lastName}|"></span>
+            <span class="info-mail" th:text="*{email}"></span>
+            <span class="info" th:text="*{description}"></span>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>
