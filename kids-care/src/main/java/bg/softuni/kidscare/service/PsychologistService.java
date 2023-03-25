@@ -6,7 +6,6 @@ import bg.softuni.kidscare.model.view.PsychologistViewModel;
 import bg.softuni.kidscare.repository.PsychologistRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

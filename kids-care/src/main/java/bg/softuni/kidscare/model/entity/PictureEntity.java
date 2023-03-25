@@ -49,17 +49,6 @@ public class PictureEntity extends BaseEntity {
         return this;
     }
 
-//    @OneToMany(mappedBy = "picture", targetEntity = UserEntity.class)
-//    public Set<UserEntity> getUsers() {
-//        return users;
-//    }
-//
-//    public PictureEntity setUsers(Set<UserEntity> users) {
-//        this.users = users;
-//        return this;
-//    }
-
-
     @OneToMany(mappedBy = "picture", targetEntity = ProfileEntity.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<ProfileEntity> getProfiles() {
         return profiles;

@@ -8,6 +8,8 @@ import bg.softuni.kidscare.repository.UserRepository;
 import bg.softuni.kidscare.repository.UserRoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -69,5 +71,17 @@ public class UserService {
             this.userRepository.save(user);
         }
 
+    }
+
+    public UserEntity findCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = null;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails) principal).getUsername();
+        }
+        Optional<UserEntity> optionalUser = this.userRepository.findByUsername(username);
+
+        System.out.println();
+        return optionalUser.orElse(null);
     }
 }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="profile-add">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <form class="mx-auto w-25 bg-blur rounded"
+
+          th:object="${profileAddBindingModel}"
+          th:action="@{/profiles/add}"
+          th:method="post"
+          enctype="multipart/form-data">
+
+        <div class="form-group">
+            <div class="label-holder textCol d-flex">
+                <label for="city" class="h4 mb-2 text-white">Град</label>
+            </div>
+            <input
+                    th:field="*{city}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="city" name="city"
+                    required minlength="3" maxlength="25"/>
+            <small class="invalid-feedback text-danger">Името на града трябва да бъде с дължина от 3 до 25 символа!</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex">
+                <label for="age" class="h4 mb-2">Години</label>
+            </div>
+            <input
+                    th:field="*{age}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="age" name="age"
+                    required/>
+            <small class="invalid-feedback text-danger">Годините са задължително поле и трябва да сте
+                пълнолетни!</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex">
+                <label for="phoneNumber" class="h4 mb-2">Телефон</label>
+            </div>
+            <input
+                    th:field="*{phoneNumber}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                    required/>
+            <small class="invalid-feedback text-danger">Телефонният номер е задължително поле!</small>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="h4 mb-2 text-white">Описание</label>
+            <textarea
+                    th:field="*{description}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    class="form-control" id="description" rows="3"
+                    required minlength="10">
+            </textarea>
+            <small class="invalid-feedback text-danger">Описанието трябва да съдържа минимум 10 символа!</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex">
+                <label for="pricePerHour" class="h4 mb-2">Цена за час</label>
+            </div>
+            <input
+                    th:field="*{pricePerHour}"
+                    th:errorclass="'is-invalid bg-danger'"
+                    type="text" class="form-control" id="pricePerHour" name="pricePerHour"
+                    required/>
+            <small class="invalid-feedback text-danger">Цената за час е задължително поле!</small>
+        </div>
+
+        <div>
+            <label for="upload-image" class="h4 mb-2 text-white">Позволени формати за снимка: png/jpeg</label> <br>
+            <input type="file" accept="image/jpeg, image/png" id="upload-image" name="image" required="required">
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Upload">Запиши</button>
+        </div>
+
+    </form>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>

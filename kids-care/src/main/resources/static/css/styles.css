@@ -58,6 +58,11 @@
     background: #5a7c8a;
 }
 
+/*Partner Add page background*/
+.profile-add {
+    background: #464646;
+}
+
 /*Contacts page background*/
 .psychologists-all {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/psychologists.jpg");
@@ -188,6 +193,19 @@ h2 {
     margin: 10px 20px 0 200px;
     padding: 150px 0 264px 0;
 }
+
+/* Profile Add */
+.profile-add main {
+    margin: 0 auto;
+    padding: 180px 0 47px 0;
+}
+
+/* Profile All */
+
+
+
+
+
 
 /* Register */
 .register main {
