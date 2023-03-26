@@ -3,7 +3,6 @@ package bg.softuni.kidscare.service;
 import bg.softuni.kidscare.model.entity.UserRoleEntity;
 import bg.softuni.kidscare.model.enums.UserRoleEnum;
 import bg.softuni.kidscare.repository.UserRoleRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
@@ -16,12 +15,10 @@ import java.util.List;
 public class UserRoleService {
 
     private final UserRoleRepository userRoleRepository;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public UserRoleService(UserRoleRepository userRoleRepository, ModelMapper modelMapper) {
+    public UserRoleService(UserRoleRepository userRoleRepository) {
         this.userRoleRepository = userRoleRepository;
-        this.modelMapper = modelMapper;
         this.dbInit();
     }
 

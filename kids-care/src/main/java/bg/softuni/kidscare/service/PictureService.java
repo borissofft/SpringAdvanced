@@ -2,7 +2,6 @@ package bg.softuni.kidscare.service;
 
 import bg.softuni.kidscare.model.entity.PictureEntity;
 import bg.softuni.kidscare.repository.PictureRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,12 +11,10 @@ import java.io.IOException;
 @Service
 public class PictureService {
     private final PictureRepository pictureRepository;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public PictureService(PictureRepository pictureRepository, ModelMapper modelMapper) {
+    public PictureService(PictureRepository pictureRepository) {
         this.pictureRepository = pictureRepository;
-        this.modelMapper = modelMapper;
     }
 
     public long addPicture(MultipartFile file) throws IOException {
@@ -30,6 +27,6 @@ public class PictureService {
     }
 
     public PictureEntity findPictureById(long pictureId) {
-       return this.pictureRepository.findById(pictureId).orElse(null);
+       return this.pictureRepository.findById(pictureId).orElseThrow();
     }
 }
