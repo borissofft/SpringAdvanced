@@ -83,6 +83,11 @@
     background: #5a7c8a;
 }
 
+/*User-not-found page background*/
+.user-not-found {
+    background: #5a7c8a;
+}
+
 /*Contacts page background*/
 .psychologists-all {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/psychologists.jpg");
@@ -266,6 +271,19 @@ h2 {
 }
 
 .error-500 footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Error 500 */
+.user-not-found main {
+    padding: 350px 0 0 0;
+    text-align: center;
+}
+
+.user-not-found footer {
     position: fixed;
     left: 0;
     bottom: 0;

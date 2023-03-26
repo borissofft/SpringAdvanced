@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="user-not-found">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <!--    <h1>Съжаляваме, но юзър с име: <em th:text="${username}"/> не съществува!</h1>-->
+
+    <h1>Съжаляваме, но юзър с
+        <th:block th:if="${id} == null">име:<em th:text="| ${username} |"/></th:block>
+        <th:block th:unless="${id} == null">ID:<em th:text="| ${id} |"/></th:block>
+        не съществува!
+    </h1>
+
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>

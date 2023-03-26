@@ -28,7 +28,7 @@ public class UserApproveController {
     }
 
     @PostMapping("/approve")
-    public String registerConfirm(@Valid UserApproveBindingModel userApproveBindingModel,
+    public String approve(@Valid UserApproveBindingModel userApproveBindingModel,
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes) {
 

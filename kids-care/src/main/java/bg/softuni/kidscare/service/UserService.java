@@ -1,6 +1,7 @@
 package bg.softuni.kidscare.service;
 
 import bg.softuni.kidscare.model.binding.UserApproveBindingModel;
+import bg.softuni.kidscare.model.cmexception.UserNotFoundEx;
 import bg.softuni.kidscare.model.entity.UserEntity;
 import bg.softuni.kidscare.model.entity.UserRoleEntity;
 import bg.softuni.kidscare.model.enums.UserRoleEnum;
@@ -11,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -68,14 +70,21 @@ public class UserService {
 
         if (userEntityOptional.isPresent()) {
 
-            UserRoleEntity normalRole = this.userRoleRepository.findByRole(UserRoleEnum.NORMAL);
-            UserRoleEntity teacherRole = this.userRoleRepository.findByRole(UserRoleEnum.TEACHER);
-            UserEntity user = userEntityOptional.get()
-//                    .setRoles(new HashSet<>(Collections.singleton(this.userRoleRepository.findByRole(UserRoleEnum.TEACHER))))
-                    .setRoles(new HashSet<>(Set.of(normalRole, teacherRole)))
+            UserEntity user = userEntityOptional.get();
+
+            if ("Педагог".equals(user.getRequestedType().name())) {
+
+                UserRoleEntity normalRole = this.userRoleRepository.findByRole(UserRoleEnum.NORMAL);
+                UserRoleEntity teacherRole = this.userRoleRepository.findByRole(UserRoleEnum.TEACHER);
+
+                user.setRoles(new HashSet<>(Set.of(normalRole, teacherRole)))
                     .setApproved(true);
+            }
 
             this.userRepository.save(user);
+        } else {
+
+            throw new UserNotFoundEx(userApproveBindingModel.getUsername());
         }
 
     }
