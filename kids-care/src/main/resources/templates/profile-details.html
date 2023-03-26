@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="profile-details">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+
+    <div class="card mb-3"  style="max-width: 900px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img class="img-fluid rounded-start"
+                     th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(profile.picture.getContent())}" alt="image"/>>
+            </div>
+            <div class="col-md-8"
+                 th:object = "${profile}">
+                <div class="card-body">
+                    <h3 class="card-title" th:text="*{user.username}">Име</h3>
+                    <h6 class="card-text" th:text="|Град: *{city}|">Град</h6>
+                    <h6 class="card-text" th:text="|Години: *{age}|">Години</h6>
+                    <h6 class="card-text" th:text="|Телефон: *{phoneNumber}|">Телефон</h6>
+                    <p class="card-text" th:text="|Описание: *{description}|">Описание</p>
+                    <p class="card-text"><small class="text-body-secondary" th:text="*{user.email}">Имейл</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>

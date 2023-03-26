@@ -45,7 +45,7 @@ public class ProfileController {
         model.addAttribute("profile", this.profileService.findProfileById(id));
         model.addAttribute("imgUtil", new ImageUtil());
 
-        return "details";
+        return "profile-details";
     }
 
     @GetMapping("/all")

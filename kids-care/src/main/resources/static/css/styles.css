@@ -66,9 +66,20 @@
 /*User Approve page background*/
 .user-approve {
     background: #5a7c8a;
+}
 
-}/*Details profile page background*/
+/*Details profile page background*/
 .profile-details {
+    background: #5a7c8a;
+}
+
+/*Error 404 page background*/
+.error-404 {
+    background: #5a7c8a;
+}
+
+/*Error 500 page background*/
+.error-500 {
     background: #5a7c8a;
 }
 
@@ -225,11 +236,37 @@ h2 {
 
 /* Profile Details */
 .profile-details main {
-    padding: 120px 0 0 200px;
+    padding: 120px 0 0 350px;
 }
 
 .profile-details footer {
-    position: sticky;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Error 404 */
+.error-404 main {
+    padding: 350px 0 0 0;
+    text-align: center;
+}
+
+.error-404 footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Error 500 */
+.error-500 main {
+    padding: 350px 0 0 0;
+    text-align: center;
+}
+
+.error-500 footer {
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
