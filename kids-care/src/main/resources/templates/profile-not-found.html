@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body class="user-not-found">
+
+<header class="navigation" th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <h1>Съжаляваме, но профил с ID: <em th:text="${id}"/> не съществува!</h1>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+</html>

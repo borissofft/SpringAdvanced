@@ -82,6 +82,7 @@ public class UserService {
             }
 
             this.userRepository.save(user);
+
         } else {
 
             throw new UserNotFoundEx(userApproveBindingModel.getUsername());
@@ -97,11 +98,14 @@ public class UserService {
         }
         Optional<UserEntity> optionalUser = this.userRepository.findByUsername(username);
 
-        return optionalUser.orElse(null);
+        String finalUsername = username;
+        return optionalUser.
+                orElseThrow(() -> new UserNotFoundEx(finalUsername));
     }
 
     public UserEntity findUserById(Long id) {
-        return this.userRepository.findById(id).orElse(null);
+        return this.userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundEx(id));
     }
 
 }

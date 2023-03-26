@@ -1,5 +1,6 @@
 package bg.softuni.kidscare.service;
 
+import bg.softuni.kidscare.model.cmexception.ProfileNotFoundEx;
 import bg.softuni.kidscare.model.cmexception.UserNotFoundEx;
 import bg.softuni.kidscare.model.entity.ProfileEntity;
 import bg.softuni.kidscare.model.service.ProfileServiceModel;
@@ -72,7 +73,6 @@ public class ProfileService {
     public ProfileViewModel findProfileById(Long id) {
         return this.profileRepository.findById(id)
                 .map(profileEntity -> this.modelMapper.map(profileEntity, ProfileViewModel.class))
-//                .orElse(null);
-                .orElseThrow(() -> new UserNotFoundEx(id));
+                .orElseThrow(() -> new ProfileNotFoundEx(id));
     }
 }
