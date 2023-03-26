@@ -2,6 +2,7 @@ package bg.softuni.kidscare.service;
 
 import bg.softuni.kidscare.model.binding.UserApproveBindingModel;
 import bg.softuni.kidscare.model.entity.UserEntity;
+import bg.softuni.kidscare.model.entity.UserRoleEntity;
 import bg.softuni.kidscare.model.enums.UserRoleEnum;
 import bg.softuni.kidscare.model.service.UserRegisterServiceModel;
 import bg.softuni.kidscare.repository.UserRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -65,9 +67,14 @@ public class UserService {
         Optional<UserEntity> userEntityOptional = this.userRepository.findByUsername(userApproveBindingModel.getUsername());
 
         if (userEntityOptional.isPresent()) {
+
+            UserRoleEntity normalRole = this.userRoleRepository.findByRole(UserRoleEnum.NORMAL);
+            UserRoleEntity teacherRole = this.userRoleRepository.findByRole(UserRoleEnum.TEACHER);
             UserEntity user = userEntityOptional.get()
-                    .setRoles(new HashSet<>(Collections.singleton(this.userRoleRepository.findByRole(UserRoleEnum.TEACHER))))
+//                    .setRoles(new HashSet<>(Collections.singleton(this.userRoleRepository.findByRole(UserRoleEnum.TEACHER))))
+                    .setRoles(new HashSet<>(Set.of(normalRole, teacherRole)))
                     .setApproved(true);
+
             this.userRepository.save(user);
         }
 

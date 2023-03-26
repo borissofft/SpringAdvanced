@@ -31,10 +31,12 @@ public class SecurityConfiguration {
             // the URL-s below are available for all users - logged in and anonymous
           requestMatchers("/", "/psychologists/all", "/articles/all", "/about", "/contacts", "/partners/all"
                   , "/in-progress", "/users/login", "/users/register", "/users/login-error").permitAll().
-            // only for teachers
+            // ONLY for clients
+          requestMatchers("profiles/all").hasRole(UserRoleEnum.NORMAL.name()).
+            // ONLY for teachers
           requestMatchers("/profiles/add").hasRole(UserRoleEnum.TEACHER.name()).
-            // only for admins
-          requestMatchers("/partners/add", "/psychologists/add", "/articles/add").hasRole(UserRoleEnum.ADMIN.name()).
+            // ONLY for admins
+          requestMatchers("/partners/add", "/psychologists/add", "/articles/add", "/users/approve").hasRole(UserRoleEnum.ADMIN.name()).
         anyRequest().authenticated().
           and().
             // configure login with HTML form

@@ -1,7 +1,6 @@
 package bg.softuni.kidscare.web;
 
 import bg.softuni.kidscare.model.binding.ProfileAddBindingModel;
-import bg.softuni.kidscare.model.entity.ProfileEntity;
 import bg.softuni.kidscare.model.service.ProfileServiceModel;
 import bg.softuni.kidscare.model.view.ProfileViewModel;
 import bg.softuni.kidscare.service.ProfileService;
