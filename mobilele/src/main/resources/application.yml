@@ -1,23 +1,35 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mobilelele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/mobilelele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${MYSQL_USER:root}
     password:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     defer-datasource-initialization: true
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
   sql:
     init:
-      mode: always
+      mode: never
 
 mail:
-  host: localhost
-  port: 1025
-  username: "admin@example.com"
-  password: ""
+  host: ${MAIL_HOST:localhost}
+  port: ${MAIL_PORT:1025}
+  username: ${MAIL_USERNAME:admin@example.com}
+  password: ${MAIL_PASS:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: 8081
 
 mobilele:
   admin:
