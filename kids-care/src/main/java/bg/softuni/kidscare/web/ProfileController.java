@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,7 +62,8 @@ public class ProfileController {
     @PostMapping("/add")
     public String addConfirm(@Valid ProfileAddBindingModel profileAddBindingModel,
                              BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes) throws IOException {
+                             RedirectAttributes redirectAttributes,
+                             @AuthenticationPrincipal UserDetails userDetails) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes
@@ -72,7 +75,8 @@ public class ProfileController {
         }
 
         this.profileService
-                .addProfile(this.modelMapper.map(profileAddBindingModel, ProfileServiceModel.class));
+                .addProfile(this.modelMapper.map(profileAddBindingModel, ProfileServiceModel.class),
+                        userDetails);
 
         return "redirect:all";
     }

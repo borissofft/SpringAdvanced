@@ -89,17 +89,9 @@ public class UserService {
 
     }
 
-    public UserEntity findCurrentUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = null;
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        }
-        Optional<UserEntity> optionalUser = this.userRepository.findByUsername(username);
-
-        String finalUsername = username;
-        return optionalUser.
-                orElseThrow(() -> new UserNotFoundEx(finalUsername));
+    public UserEntity findCurrentUser(UserDetails userDetails) {
+        return this.userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(() -> new UserNotFoundEx(userDetails.getUsername()));
     }
 
     public UserEntity findUserById(Long id) {

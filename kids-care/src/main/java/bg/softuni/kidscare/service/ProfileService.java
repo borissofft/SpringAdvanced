@@ -1,7 +1,6 @@
 package bg.softuni.kidscare.service;
 
 import bg.softuni.kidscare.model.cmexception.ProfileNotFoundEx;
-import bg.softuni.kidscare.model.cmexception.UserNotFoundEx;
 import bg.softuni.kidscare.model.entity.ProfileEntity;
 import bg.softuni.kidscare.model.service.ProfileServiceModel;
 import bg.softuni.kidscare.model.view.ProfileViewModel;
@@ -9,12 +8,11 @@ import bg.softuni.kidscare.repository.ProfileRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 public class ProfileService {
@@ -32,11 +30,12 @@ public class ProfileService {
     }
 
 
-    public void addProfile(ProfileServiceModel profileServiceModel) throws IOException {
+    public void addProfile(ProfileServiceModel profileServiceModel, UserDetails userDetails) throws IOException {
         long pictureId = this.pictureService.addPicture(profileServiceModel.getImage());
         ProfileEntity profile = this.modelMapper.map(profileServiceModel, ProfileEntity.class);
         profile.setPicture(this.pictureService.findPictureById(pictureId));
-        profile.setUser(this.userService.findCurrentUser());
+//        profile.setUser(this.userService.findCurrentUser());
+        profile.setUser(this.userService.findCurrentUser(userDetails));
         this.profileRepository.save(profile);
     }
 
@@ -44,18 +43,6 @@ public class ProfileService {
         return this.profileRepository
                 .findAll(pageable)
                 .map(this::map);
-
-//        List<ProfileViewModel> viewModels = this.profileRepository.findAll(pageable)
-//                .stream()
-//                .map(profileEntity -> {
-//                    ProfileViewModel viewModel = this.modelMapper.map(profileEntity, ProfileViewModel.class);
-//                    viewModel.setPicture(this.pictureService.findPictureById(profileEntity.getPicture().getId()));
-//                    viewModel.setUser(this.userService.findUserById(profileEntity.getUser().getId()));
-//                    return viewModel;
-//                })
-//                .toList();
-//
-//        return new PageImpl<>(viewModels);
     }
 
     private ProfileViewModel map(ProfileEntity profileEntity) {
