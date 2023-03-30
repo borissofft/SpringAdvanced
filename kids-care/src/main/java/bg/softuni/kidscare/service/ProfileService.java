@@ -2,6 +2,7 @@ package bg.softuni.kidscare.service;
 
 import bg.softuni.kidscare.model.cmexception.ProfileNotFoundEx;
 import bg.softuni.kidscare.model.entity.ProfileEntity;
+import bg.softuni.kidscare.model.enums.UserRoleEnum;
 import bg.softuni.kidscare.model.service.ProfileServiceModel;
 import bg.softuni.kidscare.model.view.ProfileViewModel;
 import bg.softuni.kidscare.repository.ProfileRepository;
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -66,4 +68,29 @@ public class ProfileService {
         this.profileRepository.findById(id)
                 .ifPresent(this.profileRepository::delete);
     }
+
+    public boolean isOwner(UserDetails userDetails, Long id) {
+        if (id == null || userDetails == null) {
+            return  false;
+        }
+
+        ProfileEntity profile = this.profileRepository.
+                findById(id).
+                orElse(null);
+
+        if (profile == null) {
+            return false;
+        }
+
+        return userDetails.getUsername().equals(profile.getUser().getUsername()) ||
+                isUserAdmin(userDetails);
+    }
+
+    private boolean isUserAdmin(UserDetails userDetails) {
+        return userDetails.getAuthorities().
+                stream().
+                map(GrantedAuthority::getAuthority).
+                anyMatch(a -> a.equals("ROLE_" + UserRoleEnum.ADMIN.name()));
+    }
+
 }

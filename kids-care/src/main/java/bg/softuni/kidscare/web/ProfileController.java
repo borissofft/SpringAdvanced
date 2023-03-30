@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -42,10 +43,13 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public String getProfileById(@PathVariable Long id, Model model) {
+    public String getProfileById(@PathVariable Long id,
+                                 @AuthenticationPrincipal UserDetails userDetails,
+                                 Model model) {
 
         model.addAttribute("profile", this.profileService.findProfileById(id));
         model.addAttribute("imgUtil", new ImageUtil());
+        model.addAttribute("canDelete", this.profileService.isOwner(userDetails, id));
 
         return "profile-details";
     }
@@ -59,6 +63,7 @@ public class ProfileController {
         return "profiles";
     }
 
+    @PreAuthorize("@profileService.isOwner(#userDetails, #id)")
     @DeleteMapping("/{id}")
     public String deleteProfile(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
 
