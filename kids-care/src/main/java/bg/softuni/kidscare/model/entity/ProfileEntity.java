@@ -79,7 +79,7 @@ public class ProfileEntity extends BaseEntity {
         return this;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     public UserEntity getUser() {
         return user;
     }

@@ -59,6 +59,14 @@ public class ProfileController {
         return "profiles";
     }
 
+    @DeleteMapping("/{id}")
+    public String deleteProfile(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
+
+        this.profileService.deleteProfileById(id);
+
+        return "redirect:all";
+    }
+
     @PostMapping("/add")
     public String addConfirm(@Valid ProfileAddBindingModel profileAddBindingModel,
                              BindingResult bindingResult,

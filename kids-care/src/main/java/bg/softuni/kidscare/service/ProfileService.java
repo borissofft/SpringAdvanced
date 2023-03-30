@@ -34,7 +34,6 @@ public class ProfileService {
         long pictureId = this.pictureService.addPicture(profileServiceModel.getImage());
         ProfileEntity profile = this.modelMapper.map(profileServiceModel, ProfileEntity.class);
         profile.setPicture(this.pictureService.findPictureById(pictureId));
-//        profile.setUser(this.userService.findCurrentUser());
         profile.setUser(this.userService.findCurrentUser(userDetails));
         this.profileRepository.save(profile);
     }
@@ -61,5 +60,10 @@ public class ProfileService {
         return this.profileRepository.findById(id)
                 .map(profileEntity -> this.modelMapper.map(profileEntity, ProfileViewModel.class))
                 .orElseThrow(() -> new ProfileNotFoundEx(id));
+    }
+
+    public void deleteProfileById(Long id) {
+        this.profileRepository.findById(id)
+                .ifPresent(this.profileRepository::delete);
     }
 }

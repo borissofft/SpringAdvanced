@@ -16,6 +16,7 @@
                 <img class="img-fluid rounded-start"
                      th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(profile.picture.getContent())}" alt="image"/>>
             </div>
+
             <div class="col-md-8"
                  th:object = "${profile}">
                 <div class="card-body">
@@ -28,6 +29,12 @@
                 </div>
             </div>
         </div>
+
+        <form th:method="DELETE" th:action="@{/profiles/{id}(id=*{id})}"
+              class="form-inline my-2 my-lg-0 border px-3">
+            <button type="submit" name="submit" value="value" class="btn btn-link nav-link">Изтриване</button>
+        </form>
+
     </div>
 
 </main>

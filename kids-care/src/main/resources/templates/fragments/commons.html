@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto col-12 justify-content-between">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/profiles/all}" sec:authorize="isAuthenticated()">Профили</a>
+                    <a class="nav-link" th:href="@{/profiles/all}" sec:authorize="hasRole('NORMAL')">Профили</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/profiles/add}" sec:authorize="hasRole('TEACHER')">Добави профил</a>
