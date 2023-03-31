@@ -69,7 +69,7 @@ public class ProfileController {
 
         this.profileService.deleteProfileById(id);
 
-        return "redirect:all";
+        return "redirect:all?page=0";
     }
 
     @PostMapping("/add")
@@ -91,7 +91,7 @@ public class ProfileController {
                 .addProfile(this.modelMapper.map(profileAddBindingModel, ProfileServiceModel.class),
                         userDetails);
 
-        return "redirect:all";
+        return "redirect:all?page=0";
     }
 
     @ModelAttribute
