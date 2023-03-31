@@ -70,7 +70,9 @@ public class UserService {
 
             UserEntity user = userEntityOptional.get();
 
-            if ("Педагог".equals(user.getRequestedType().name())) {
+            boolean isAdmin = user.getRoles().stream().anyMatch(userRoleEntity -> userRoleEntity.getRole().equals(UserRoleEnum.ADMIN));
+
+            if ("Педагог".equals(user.getRequestedType().name()) && !isAdmin) {
 
                 UserRoleEntity normalRole = this.userRoleRepository.findByRole(UserRoleEnum.NORMAL);
                 UserRoleEntity teacherRole = this.userRoleRepository.findByRole(UserRoleEnum.TEACHER);

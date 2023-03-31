@@ -69,8 +69,8 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @ManyToMany()
+//    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Set<UserRoleEntity> getRoles() {
         return roles;
     }
