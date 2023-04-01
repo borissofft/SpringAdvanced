@@ -17,7 +17,6 @@ function renderArticle(body) {
 
     // imageSection.setAttribute("src", body.imageUrl)
     let contentHtml = `<div class="articles" id="article${body.id}">\n`
-    contentHtml += '<div type="hidden">' + body.id + '</div>'
     contentHtml += `<img src="${body.imageUrl}" class="card-img-top" alt="image">`
     contentHtml += '<p>' + body.content + '</p>\n'
 
