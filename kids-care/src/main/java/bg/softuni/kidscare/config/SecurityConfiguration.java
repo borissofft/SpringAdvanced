@@ -31,7 +31,7 @@ public class SecurityConfiguration {
             // allow access to all static files (images, CSS, js)
           requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
             // the URL-s below are available for all users - logged in and anonymous
-          requestMatchers("/", "/psychologists/all", "/articles/all", "/about", "/contacts", "/partners/all"
+          requestMatchers("/", "/psychologists/all", "/articles/**", "/api/**", "/about", "/contacts", "/partners/all"
                   , "/in-progress", "/users/login", "/users/register", "/users/login-error").permitAll().
             // ONLY for clients
           requestMatchers("profiles/all").hasRole(UserRoleEnum.NORMAL.name()).

@@ -68,7 +68,12 @@
     background: #5a7c8a;
 }
 
-/*Details profile page background*/
+/*Article details page background*/
+.article-details {
+    background: #5a7c8a;
+}
+
+/*Profile details page background*/
 .profile-details {
     background: #5a7c8a;
 }
@@ -231,6 +236,11 @@ h2 {
 .articles-all main {
     margin: 10px 20px 0 200px;
     padding: 150px 0 264px 0;
+}
+
+/* Article Details */
+.article-details main {
+    padding: 120px 0 0 350px;
 }
 
 /* Profile Add */
