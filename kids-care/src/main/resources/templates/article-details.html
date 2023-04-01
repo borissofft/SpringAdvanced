@@ -10,24 +10,25 @@
 
 <main>
     <div class="card" style="width: 50rem;">
-<!--         th:object="${article}">-->
+        <!--         th:object="${article}">-->
 
-<!--        <img th:src="*{imageUrl}" class="card-img-top" alt="image">-->
+        <!--        <img th:src="*{imageUrl}" class="card-img-top" alt="image">-->
         <input type="hidden" name="articleId" id="articleId" th:value="*{id}">
-        <img id="articleImage" src="" class="card-img-top" alt="image">
+        <!--        <img id="articleImage" src="" class="card-img-top" alt="image">-->
+        <div id="currentArticle">
 
-        <div class="card-body">
-<!--            <p class="card-text" th:text="*{content}">Съдържание</p>-->
-            <p id="articleContent" class="card-text"></p>
+            <div class="card-body">
+                <!--            <p class="card-text" th:text="*{content}">Съдържание</p>-->
+                <p id="articleContent" class="card-text"></p>
+            </div>
+
         </div>
-
-<!--        <div th:if="${canDelete}">-->
-<!--            <form th:method="DELETE" th:action="@{/articles/{id}(id=*{id})}"-->
-<!--                  class="form-inline my-2 my-lg-0 border px-3">-->
-<!--                <button type="submit" name="submit" value="value" class="btn btn-link nav-link">Изтриване</button>-->
-<!--            </form>-->
-<!--        </div>-->
-
+        <!--        <div th:if="${canDelete}">-->
+        <!--            <form th:method="DELETE" th:action="@{/articles/{id}(id=*{id})}"-->
+        <!--                  class="form-inline my-2 my-lg-0 border px-3">-->
+        <!--                <button type="submit" name="submit" value="value" class="btn btn-link nav-link">Изтриване</button>-->
+        <!--            </form>-->
+        <!--        </div>-->
     </div>
 
     <script th:src="@{/js/articles.js}"></script>

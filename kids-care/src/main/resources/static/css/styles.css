@@ -238,9 +238,14 @@ h2 {
     padding: 150px 0 264px 0;
 }
 
+.articles-all main a {
+    font-size: 21px;
+    font-weight: bold;
+}
+
 /* Article Details */
 .article-details main {
-    padding: 120px 0 0 350px;
+    padding: 120px 0 0 560px;
 }
 
 /* Profile Add */

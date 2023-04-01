@@ -67,4 +67,10 @@ public class ArticleService {
                 map(GrantedAuthority::getAuthority).
                 anyMatch(a -> a.equals("ROLE_" + UserRoleEnum.ADMIN.name()));
     }
+
+    public ArticleViewModel deleteArticle(Long id) {
+        ArticleViewModel article = this.findArticleById(id);
+        this.articleRepository.deleteById(id);
+        return article;
+    }
 }

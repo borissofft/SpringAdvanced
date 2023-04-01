@@ -6,6 +6,7 @@ public class ArticleViewModel {
     private String title;
     private String content;
     private String imageUrl;
+    private boolean canEdit;
 
     public ArticleViewModel() {
 
@@ -44,6 +45,15 @@ public class ArticleViewModel {
 
     public ArticleViewModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public boolean isCanEdit() {
+        return canEdit;
+    }
+
+    public ArticleViewModel setCanEdit(boolean canEdit) {
+        this.canEdit = canEdit;
         return this;
     }
 }

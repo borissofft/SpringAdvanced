@@ -13,9 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Controller
 @RequestMapping("/articles")
@@ -38,7 +41,12 @@ public class ArticleController {
     public String getProfileById(@PathVariable Long id,
                                  @AuthenticationPrincipal UserDetails userDetails,
                                  Model model) {
-
+        try {
+            ArticleViewModel article = this.articleService.findArticleById(id);
+            article.setCanEdit(this.articleService.isAdmin(userDetails, id));
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
+        }
 //        model.addAttribute("article", this.articleService.findArticleById(id));
 //        model.addAttribute("canDelete", this.articleService.isAdmin(userDetails, id));
 
