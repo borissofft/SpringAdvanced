@@ -1,7 +1,7 @@
 package bg.softuni.kidscare.config;
 
 import bg.softuni.kidscare.model.enums.UserRoleEnum;
-import bg.softuni.kidscare.model.service.ApplicationUserDetailsService;
+import bg.softuni.kidscare.service.ApplicationUserDetailsService;
 import bg.softuni.kidscare.repository.UserRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

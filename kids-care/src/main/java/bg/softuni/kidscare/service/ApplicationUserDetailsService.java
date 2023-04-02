@@ -1,4 +1,4 @@
-package bg.softuni.kidscare.model.service;
+package bg.softuni.kidscare.service;
 
 import bg.softuni.kidscare.model.entity.UserEntity;
 import bg.softuni.kidscare.model.entity.UserRoleEntity;
