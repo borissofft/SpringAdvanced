@@ -50,7 +50,7 @@ public class RegistrationController {
         this.userService.registerUser(this.modelMapper
                 .map(userRegisterBindingModel, UserRegisterServiceModel.class));
 
-        return "redirect:login";
+        return "redirect:/users/login";
     }
 
     @ModelAttribute

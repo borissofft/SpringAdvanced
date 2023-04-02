@@ -1,5 +1,6 @@
 package bg.softuni.kidscare.service;
 
+import bg.softuni.kidscare.model.binding.UserApproveBindingModel;
 import bg.softuni.kidscare.model.entity.UserEntity;
 import bg.softuni.kidscare.model.entity.UserRoleEntity;
 import bg.softuni.kidscare.model.enums.UserRequestTypeEnum;
@@ -123,6 +124,7 @@ public class UserServiceTest {
 
         when(this.mockUserRepository.count()).thenReturn(1L);
         when(this.mockPasswordEncoder.encode(testServiceModel.getPassword())).thenReturn(encodedPassword);
+        when(this.mockUserRoleRepository.findByRole((UserRoleEnum.NORMAL))).thenReturn(testNormalRole);
 
         this.toTest.registerUser(testServiceModel);
 
@@ -132,7 +134,20 @@ public class UserServiceTest {
 
         assertEquals(testServiceModel.getEmail(), client.getEmail());
         assertEquals(encodedPassword, client.getPassword());
-//        assertEquals((new HashSet<>(Collections.singleton(testNormalRole))), client.getRoles());
+        assertEquals((new HashSet<>(Collections.singleton(testNormalRole))), client.getRoles());
     }
 
+
+//    @Test
+//    void testUserApprove_Success() {
+//
+//        String searched = "client";
+//
+//        when(this.mockUserRepository.findByUsername(searched)).thenReturn()
+//
+//        UserApproveBindingModel testUser = new UserApproveBindingModel()
+//                .setUsername(searched);
+//
+//        this.toTest.approveUser(testUser);
+//    }
 }

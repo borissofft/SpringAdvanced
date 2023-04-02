@@ -23,4 +23,12 @@ public class UserRoleEntity extends BaseEntity {
         this.role = role;
         return this;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("UserRoleEntity{");
+        sb.append("role=").append(role);
+        sb.append('}');
+        return sb.toString();
+    }
 }
