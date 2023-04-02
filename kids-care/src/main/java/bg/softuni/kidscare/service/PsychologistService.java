@@ -43,12 +43,6 @@ public class PsychologistService {
                 .toList();
     }
 
-//    public long deleteById(Long id) {
-//        Optional<PsychologistEntity> psychologist = this.psychologistRepository.findById(id);
-//        psychologist.ifPresent(this.psychologistRepository::delete);
-//        return id;
-//    }
-
     public void deleteById(Long id) {
         PsychologistEntity psychologist = this.psychologistRepository
                 .findById(id).orElseThrow();
