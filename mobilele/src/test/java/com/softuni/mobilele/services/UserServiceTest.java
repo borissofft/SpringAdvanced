@@ -5,7 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.softuni.mobilele.domain.dtos.banding.UserRegisterFormDto;
+import com.softuni.mobilele.domain.dtos.binding.UserRegisterFormDto;
 import com.softuni.mobilele.domain.entities.UserEntity;
 import com.softuni.mobilele.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
