@@ -57,7 +57,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testUserRegistrationAdmin_AdminGetAllRoles() {
+    void testUserRegistrationAdmin_adminGetAllRoles() {
 
         // ARRANGE
 
@@ -100,7 +100,7 @@ public class UserServiceTest {
 
 
     @Test
-    void testUserRegistrationClient_ClientGetNormalRole() {
+    void testUserRegistrationClient_clientGetNormalRole() {
 
         String username = "client";
         String email = "client@gmail.com";

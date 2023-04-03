@@ -44,7 +44,7 @@ public class RegistrationController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel",
                             bindingResult);
 
-            return "redirect:register";
+            return "redirect:/users/register";
         }
 
         this.userService.registerUser(this.modelMapper
