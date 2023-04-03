@@ -100,4 +100,9 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundEx(id));
     }
 
+    public UserEntity findUserByUsername(String username){
+        return this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundEx(username));
+    }
+
 }
