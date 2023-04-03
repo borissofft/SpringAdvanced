@@ -55,13 +55,13 @@ public class PsychologistController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.psychologistAddBindingModel",
                             bindingResult);
 
-            return "redirect:add";
+            return "redirect:/psychologists/add";
         }
 
         this.psychologistService
                 .addPsychologists(this.modelMapper.map(psychologistAddBindingModel, PsychologistServiceModel.class));
 
-        return "redirect:all";
+        return "redirect:psychologists/all";
     }
 
     @ModelAttribute
