@@ -71,13 +71,13 @@ public class ArticleController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.articleAddBindingModel",
                             bindingResult);
 
-            return "redirect:add";
+            return "redirect:/articles/add";
         }
 
         this.articleService
                 .addArticle(this.modelMapper.map(articleAddBindingModel, ArticleServiceModel.class));
 
-        return "redirect:all";
+        return "redirect:/articles/all";
     }
 
     @ModelAttribute

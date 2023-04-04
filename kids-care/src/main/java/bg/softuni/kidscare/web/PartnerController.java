@@ -54,13 +54,13 @@ public class PartnerController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.partnerAddBindingModel",
                             bindingResult);
 
-            return "redirect:add";
+            return "redirect:/partners/add";
         }
 
         this.partnerService
                 .addPartner(this.modelMapper.map(partnerAddBindingModel, PartnerServiceModel.class));
 
-        return "redirect:all";
+        return "redirect:/partners/all";
     }
 
     @ModelAttribute

@@ -9,7 +9,6 @@ public class PictureEntity extends BaseEntity {
     private String fileName;
     private String contentType;
     byte[] content;
-    //    private Set<UserEntity> users;
     private Set<ProfileEntity> profiles;
     private Set<PsychologistEntity> psychologists;
 

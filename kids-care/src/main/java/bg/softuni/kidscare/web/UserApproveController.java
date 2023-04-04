@@ -39,7 +39,7 @@ public class UserApproveController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.userApproveBindingModel",
                             bindingResult);
 
-            return "redirect:approve";
+            return "redirect:/users/approve";
         }
 
         this.userService.approveUser(userApproveBindingModel);

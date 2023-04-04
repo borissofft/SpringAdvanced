@@ -84,7 +84,7 @@ public class ProfileController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.profileAddBindingModel",
                             bindingResult);
 
-            return "redirect:add";
+            return "redirect:/profiles/add";
         }
 
         this.profileService
