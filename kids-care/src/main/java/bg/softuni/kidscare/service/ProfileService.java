@@ -92,5 +92,4 @@ public class ProfileService {
                 map(GrantedAuthority::getAuthority).
                 anyMatch(a -> a.equals("ROLE_" + UserRoleEnum.ADMIN.name()));
     }
-
 }

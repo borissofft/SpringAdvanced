@@ -78,7 +78,7 @@ public class UserService {
                 UserRoleEntity teacherRole = this.userRoleRepository.findByRole(UserRoleEnum.TEACHER);
 
                 user.setRoles(new HashSet<>(Set.of(normalRole, teacherRole)))
-                    .setApproved(true);
+                        .setApproved(true);
             }
 
             this.userRepository.save(user);
@@ -99,10 +99,8 @@ public class UserService {
         return this.userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundEx(id));
     }
-
-    public UserEntity findUserByUsername(String username){
+    public UserEntity findUserByUsername(String username) {
         return this.userRepository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundEx(username));
     }
-
 }
