@@ -78,6 +78,11 @@
     background: #5a7c8a;
 }
 
+/*Error 400 page background*/
+.error-400 {
+    background: #5a7c8a;
+}
+
 /*Error 403 page background*/
 .error-403 {
     background: #5a7c8a;
@@ -265,6 +270,19 @@ h2 {
 }
 
 .profile-details footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Error 400 */
+.error-400 main {
+    padding: 350px 0 0 0;
+    text-align: center;
+}
+
+.error-400 footer {
     position: fixed;
     left: 0;
     bottom: 0;
